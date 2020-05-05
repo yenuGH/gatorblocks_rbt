@@ -16,6 +16,7 @@ class _TaskPlannerState extends State<TaskPlanner> {
 
   final TextEditingController _textEditingController = TextEditingController();
   var db = DatabaseHelper();
+  final List<Tasks> _itemList = <Tasks>[];
   
   @override
   void initState() {
@@ -30,6 +31,13 @@ class _TaskPlannerState extends State<TaskPlanner> {
     Tasks tasksItem = Tasks(text, DateTime.now().toIso8601String());
     int savedItemId = await db.saveItem(tasksItem);
 
+    Tasks addedItem = await db.getItem(savedItemId);
+
+    setState(() {
+      _itemList.insert(0, addedItem);
+        
+    });
+
     print("Item saved ID: $savedItemId");
 
   }
@@ -38,7 +46,37 @@ class _TaskPlannerState extends State<TaskPlanner> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blueGrey,
+      
+      body: Column(
+        children: <Widget>[
+          Flexible(
+            child: ListView.builder(
+              padding: EdgeInsets.all(8.0),
+              reverse: false,
+              itemCount: _itemList.length,
+              itemBuilder: (_,  int index) {
+                return Card(
+                  color: Colors.white10,
+                  child: ListTile(
+                    title: _itemList[index],
+                    onLongPress: () => debugPrint(""),
+                    trailing: Listener(
+                      key: Key(_itemList[index].itemName),
+                      child: Icon(Icons.remove_circle, color: Colors.redAccent,),
+                      onPointerDown: (pointerEvent)  => debugPrint(""),
+                    ),
+                  ),
+                );
+              }
+           ),         
+          ),
+          Divider(
+            height: 1.0,
+          ),
+        ],
+      ),
+      
       appBar: AppBar(
         title: Text("Task Planner"),
         centerTitle: true,
@@ -85,6 +123,7 @@ class _TaskPlannerState extends State<TaskPlanner> {
         FlatButton(onPressed: () {
           _handleSubmitted(_textEditingController.text);
           _textEditingController.clear();
+          Navigator.pop(context);
           },
           child: Text("Save")
         ),
@@ -103,7 +142,10 @@ class _TaskPlannerState extends State<TaskPlanner> {
     List items = await db.getItems();
     items.forEach((item) {
       Tasks tasksItem = Tasks.map(items);
-      print("DB Items: ${tasksItem.itemName}");
+      setState(() {
+        _itemList.add(Tasks.map(item));
+      });
+      //print("DB Items: ${tasksItem.itemName}");
     });
   }
 

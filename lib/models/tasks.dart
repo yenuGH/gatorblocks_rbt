@@ -6,7 +6,7 @@ class Tasks extends StatelessWidget {
   String _dateCreated;
   int _id;
 
-  Tasks(this._itemName, this._dateCreated);
+  Tasks(this._itemName, this._dateCreated,);
 
   Tasks.map(dynamic obj) {
     this._itemName = obj["itemName"];
@@ -42,14 +42,19 @@ class Tasks extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(_itemName,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16.9), 
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 5.0),
-            child: Text("Created on: $_dateCreated", 
-              style: TextStyle(color: Colors.white70, fontSize: 13.8, fontStyle: FontStyle.italic),
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(_itemName,
+                style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16.9), 
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 5.0),
+                child: Text("Created on: $_dateCreated", 
+                style: TextStyle(color: Colors.white70, fontSize: 13.8, fontStyle: FontStyle.italic),
+                ),
+              ),
+            ],
           ),
         ],
       ),
