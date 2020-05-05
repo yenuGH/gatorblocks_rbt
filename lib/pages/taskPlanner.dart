@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gatorblocks_rbt/models/tasks.dart';
+import 'package:gatorblocks_rbt/utils/databaseClient.dart';
 //import 'package:gatorblocks_rbt/models/tasks.dart';
 
 class TaskPlanner extends StatefulWidget {
@@ -13,6 +15,18 @@ class TaskPlanner extends StatefulWidget {
 class _TaskPlannerState extends State<TaskPlanner> {
 
   final TextEditingController _textEditingController = TextEditingController();
+
+  var db = DatabaseHelper();
+  
+  void _handleSubmitted(String text) async {
+    _textEditingController.clear();
+
+    Tasks tasksItem = Tasks(text, DateTime.now().toIso8601String());
+    int savedItemId = await db.saveItem(tasksItem);
+
+    print("Item saved ID: $savedItemId");
+
+  }
 
 
   @override
@@ -63,7 +77,7 @@ class _TaskPlannerState extends State<TaskPlanner> {
       ),
       actions: <Widget>[
         FlatButton(onPressed: () {
-          //_handleSubmit(_textEditingController.text);
+          _handleSubmitted(_textEditingController.text);
           _textEditingController.clear();
           },
           child: Text("Save")

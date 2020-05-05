@@ -20,7 +20,7 @@ class Tasks extends StatelessWidget {
 
  Map<String, dynamic> toMap() {
    var map = Map<String, dynamic>();
-   map["itenName"] = _itemName;
+   map["itemName"] = _itemName;
    map["dateCreated"] = _dateCreated;
 
    if (_id != null) {

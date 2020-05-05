@@ -36,7 +36,7 @@ class DatabaseHelper {
   void _onCreate(Database db, int version) async {
     await db.execute(
       "CREATE TABLE $tableName(id INTEGER PRIMARY KEY, $columnItemName TEXT, $columnDateCreated TEXT)");
-    print("Table Criada");
+    print("Table Created");
   }
 
   // Insert
