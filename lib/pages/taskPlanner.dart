@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gatorblocks_rbt/models/tasks.dart';
 import 'package:gatorblocks_rbt/utils/databaseClient.dart';
+import 'package:gatorblocks_rbt/utils/dateFormatter.dart';
 //import 'package:gatorblocks_rbt/models/tasks.dart';
 
 class TaskPlanner extends StatefulWidget {
@@ -28,7 +29,7 @@ class _TaskPlannerState extends State<TaskPlanner> {
   void _handleSubmitted(String text) async {
     _textEditingController.clear();
 
-    Tasks tasksItem = Tasks(text, DateTime.now().toIso8601String());
+    Tasks tasksItem = Tasks(text, dateFormatted());
     int savedItemId = await db.saveItem(tasksItem);
 
     Tasks addedItem = await db.getItem(savedItemId);
@@ -60,11 +61,12 @@ class _TaskPlannerState extends State<TaskPlanner> {
                   color: Colors.white10,
                   child: ListTile(
                     title: _itemList[index],
-                    onLongPress: () => debugPrint(""),
+                    onLongPress: () => _updateItem(_itemList[index], index),
                     trailing: Listener(
                       key: Key(_itemList[index].itemName),
                       child: Icon(Icons.remove_circle, color: Colors.redAccent,),
-                      onPointerDown: (pointerEvent)  => debugPrint(""),
+                      onPointerDown: (pointerEvent)  => 
+                        _deleteTasks(_itemList[index].id, index),
                     ),
                   ),
                 );
@@ -93,8 +95,8 @@ class _TaskPlannerState extends State<TaskPlanner> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             IconButton(
-              icon: Icon(Icons.more_vert),
-              onPressed: () {},
+              icon: Icon(null),
+              //onPressed: () {},
             ),
           ],
         ),
@@ -149,5 +151,72 @@ class _TaskPlannerState extends State<TaskPlanner> {
     });
   }
 
+  _deleteTasks(int id, int index) async {
+    debugPrint("Deleted item!");
 
+    await db.deleteItem(id);
+    setState(() {
+      _itemList.removeAt(index);
+    });
+  }
+
+  _updateItem(Tasks item, int index) {
+    var alert = AlertDialog(
+      title: Text("Update Item"),
+      content: Row(
+        children: <Widget>[
+          Expanded(
+            child: TextField(
+              controller: _textEditingController,
+              autofocus: true,
+              decoration: InputDecoration(
+                labelText: "Previous: " + _itemList[index].itemName.toString(),
+                hintText: "Update your task!",
+                icon: Icon(Icons.update),
+              ),
+
+            ),
+          )
+        ],
+      ),
+      actions: <Widget>[
+        FlatButton(
+          onPressed: () async {
+            Tasks newItemUpdated = Tasks.fromMap(
+              {"itemName": _textEditingController.text,
+                "dateCreated": dateFormatted(),
+                "id": item.id,
+              },
+              
+            );
+            _textEditingController.clear();
+          _handleSubmittedUpdate(index, item); // redrawing the screen bro
+          await db.updateItem(newItemUpdated); // updating the new updated item
+          setState(() {
+            _readTaskList(); // redrawing / updating the screen with all items saved in the database
+          });
+          Navigator.pop(context);
+
+          },
+          child: Text("Update")
+        ),
+        FlatButton(onPressed: ()  => Navigator.pop(context), 
+          child: Text("Cancel"),
+          ),
+      ],
+    );
+  
+  showDialog(context: context, builder: (_) {
+    return alert;
+  });
+  
+  }
+
+  void _handleSubmittedUpdate(int index, Tasks item) {
+    setState(() {
+      _itemList.removeWhere((element) {
+        _itemList[index].itemName == item.itemName;
+      });
+    });
+  }
 }
