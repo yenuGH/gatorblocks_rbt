@@ -15,9 +15,15 @@ class TaskPlanner extends StatefulWidget {
 class _TaskPlannerState extends State<TaskPlanner> {
 
   final TextEditingController _textEditingController = TextEditingController();
-
   var db = DatabaseHelper();
   
+  @override
+  void initState() {
+    super.initState();
+
+    _readTaskList();
+  }
+
   void _handleSubmitted(String text) async {
     _textEditingController.clear();
 
@@ -92,5 +98,14 @@ class _TaskPlannerState extends State<TaskPlanner> {
         return alert;
       });
   }
+
+  _readTaskList() async {
+    List items = await db.getItems();
+    items.forEach((item) {
+      Tasks tasksItem = Tasks.map(items);
+      print("DB Items: ${tasksItem.itemName}");
+    });
+  }
+
 
 }

@@ -18,7 +18,7 @@ class DatabaseHelper {
 
   Future<Database> get db async {
     if (_db != null) {
-      return db;
+      return _db;
     }
     _db = await initDb();
     return _db;
@@ -28,7 +28,7 @@ class DatabaseHelper {
 
   initDb() async {
     Directory documentDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentDirectory.path, "notodo_db.db");
+    String path = join(documentDirectory.path, "tasks_db.db");
     var ourDb = await openDatabase(path, version: 1, onCreate: _onCreate);
     return ourDb;
   }
