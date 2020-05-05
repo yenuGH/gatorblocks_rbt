@@ -6,7 +6,7 @@ class Tasks extends StatelessWidget {
   String _dateCreated;
   int _id;
 
-  Tasks(this._itemName, this._dateCreated,);
+  Tasks(this._itemName, this._dateCreated);
 
   Tasks.map(dynamic obj) {
     this._itemName = obj["itemName"];

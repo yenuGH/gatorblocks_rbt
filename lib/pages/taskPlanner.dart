@@ -141,7 +141,7 @@ class _TaskPlannerState extends State<TaskPlanner> {
   _readTaskList() async {
     List items = await db.getItems();
     items.forEach((item) {
-      Tasks tasksItem = Tasks.map(items);
+      //Tasks tasksItem = Tasks.map(items);
       setState(() {
         _itemList.add(Tasks.map(item));
       });
