@@ -2,6 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:gatorblocks_rbt/models/settingsModel.dart';
 import 'package:gatorblocks_rbt/pages/classes.dart';
 
+
+class Option {
+  IconButton iconButton;
+  Icon icon;
+  String title;
+  String subtitle;
+
+  Option({this.icon, this.title, this.subtitle});
+}
+
+
 class Settings extends StatelessWidget {
   final String title;
 
@@ -15,26 +26,65 @@ class Settings extends StatelessWidget {
         title: Text(title),
         centerTitle: true,
       ),
-      body: ListView.builder(
-        itemCount: options.length,
-        itemBuilder: (context, index){
-          return Card(
-            child: ListTile(
-              //leading: Icon(options.icon),
-              onTap: () {
-                print(options[index].title);
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Classes()));
-              },
-              leading: options[index].icon,
-              title: Text(options[index].title),
-              subtitle: Text(options[index].subtitle),
-
-
+      body: ListView(
+        children: <Widget>[
+          Card(
+            child: 
+            ListTile(
+              leading: Icon(Icons.settings, size: 40.0),
+              title: Text("General"),
+              )
             ),
-          );
-        }
+            Card(
+              child:
+              ListTile(
+                leading: Icon(Icons.class_, size: 40.0),
+                title: Text("Class"),
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Classes()));
+                },
+              )
+            ),
+            Card(
+              child:
+              ListTile(
+                leading: Icon(Icons.account_circle, size: 40.0),
+                title: Text("Account")
+              ),
+            ),
+            Card(
+              child: 
+              ListTile(
+                leading: Icon(Icons.laptop, size: 40),
+                title: Text("Useless Button")
+            ),
+          ),
+        ],
       ),
-//      body: ListView.builder(
+
+
+
+
+
+
+      // body: ListView.builder(
+      //   itemCount: options.length,
+      //   itemBuilder: (context, index){
+      //     return Card(
+      //       child: ListTile(
+              //leading: Icon(options.icon),
+              // onTap: () {
+              //   print(options[index].title);
+              //   Navigator.push(context, MaterialPageRoute(builder: (context) => Classes()));
+              // },
+              // leading: options[index].icon,
+              // title: Text(options[index].title),
+              // subtitle: Text(options[index].subtitle),
+//             ),
+//           );
+//         }
+//       ),
+// //      body: ListView.builder(
 //        itemCount: options.length,
 //        itemBuilder: (context, index){
 //          if (index == 0) {
