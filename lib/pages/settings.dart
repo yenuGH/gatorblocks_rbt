@@ -45,58 +45,6 @@ class Settings extends StatelessWidget {
           );
         }
       ),
-//      body: ListView.builder(
-//        itemCount: options.length,
-//        itemBuilder: (context, index){
-//          if (index == 0) {
-//            return SizedBox(height: 15.0);
-//          }
-//          else if(index == options.length + 1) {
-//              return SizedBox(height: 100.0);
-//            }
-//          return Container(
-//            alignment: Alignment.center,
-//            margin: EdgeInsets.all(10.0),
-//            width: double.infinity,
-//            height: 80.0,
-//            decoration: BoxDecoration(
-//              color: Colors.white,
-//              borderRadius: BorderRadius.circular(10.0),
-//              border: Border.all(color: Colors.black26),
-//            ),
-//            child: ListTile(
-//              leading: options[index-1].icon,
-//              title: Text(
-//                options[index-1].title,
-//                style: TextStyle(
-//                  color: Colors.grey[600]
-//                ),
-//              ),
-//              subtitle: Text(
-//                options[index-1].subtitle,
-//                style: TextStyle(
-//                  color: Colors.grey,
-//                ),
-//              ),
-//              onTap: () {
-//
-//              },
-//            ),
-//          );
-//        }
-//      ),
-//      body: Center(
-//        child: Text(
-//          "Settings Screen",
-//          style: TextStyle(
-//            fontSize: 30.0,
-//            fontWeight: FontWeight.bold,
-//            letterSpacing: 2.0,
-//            color: Colors.grey[800],
-//            fontFamily: 'SourceSansPro',
-//          ),
-//        ),
-//      ),
     );
   }
 }
