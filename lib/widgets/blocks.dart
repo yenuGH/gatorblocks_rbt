@@ -34,7 +34,7 @@ class _BlocksState extends State<Blocks> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          eventsContainer(),
+          //eventsContainer(),
           blocks(),
           flex(),
           blocks2(),
@@ -46,26 +46,26 @@ class _BlocksState extends State<Blocks> {
     );
   }
 
-  Widget eventsContainer(){
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      height: 70,
-      padding: EdgeInsets.all(3),
-      decoration: BoxDecoration(
-        color: Colors.black,
-      ),
-      child: Column(
-        children: <Widget>[
-          Text("Test 1",
-          style: TextStyle(
-            color: Colors.white,
-          )
-          )
+  // Widget eventsContainer(){
+  //   return Container(
+  //     width: MediaQuery.of(context).size.width,
+  //     height: 70,
+  //     padding: EdgeInsets.all(3),
+  //     decoration: BoxDecoration(
+  //       color: Colors.black,
+  //     ),
+  //     child: Column(
+  //       children: <Widget>[
+  //         Text("Test 1",
+  //         style: TextStyle(
+  //           color: Colors.white,
+  //         )
+  //         )
 
-        ],
-      )
-    );
-  }
+  //       ],
+  //     )
+  //   );
+  // }
 
   Widget blocks(){
     return Container(

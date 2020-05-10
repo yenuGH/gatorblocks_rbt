@@ -3,6 +3,7 @@ import 'package:gatorblocks_rbt/pages/classes.dart';
 
 
 class Option {
+  IconButton iconButton;
   Icon icon;
   String title;
   String subtitle;
