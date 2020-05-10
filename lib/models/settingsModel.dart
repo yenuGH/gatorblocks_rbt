@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//import 'package:gatorblocks_rbt/pages/classes.dart';
 
 class Option {
   Icon icon;
@@ -18,6 +19,7 @@ final options = [
     icon: Icon(Icons.class_, size: 40.0),
     title: 'Classes',
     subtitle: 'Manage your classes.',
+    //Classes(),
   ),
   Option(
     icon: Icon(Icons.account_circle, size: 40.0),
