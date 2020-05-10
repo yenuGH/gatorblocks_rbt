@@ -95,6 +95,7 @@ class _TaskPlannerState extends State<TaskPlanner> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             IconButton(
+              onPressed: (){},
               icon: Icon(null),
               //onPressed: () {},
             ),

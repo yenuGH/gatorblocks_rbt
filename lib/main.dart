@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gatorblocks_rbt/pages/home.dart';
+import 'package:gatorblocks_rbt/pages/classes.dart';
 //import 'package:gatorblocks_rbt/pages/settings.dart';
 //import 'package:gatorblocks_rbt/pages/taskPlanner.dart';
 
@@ -17,6 +18,7 @@ class GatorBlocks extends StatelessWidget {
       ),
       home: Home(),
       routes: <String, WidgetBuilder>{
+        //'/classesPage': (BuildContext context) => ClassesPage(),
         //'/taskPlanner': (BuildContext context) => TaskPlanner("Task Planner"),
         //'/settings': (BuildContext context) => Settings("Settings"),
       },
