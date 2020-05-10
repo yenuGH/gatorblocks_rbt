@@ -20,7 +20,7 @@ class _BlocksState extends State<Blocks> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(5),
-      height: 600,
+      height: 500,
       decoration: BoxDecoration(
         color: Color(hexColour('#EDEDED')),
         borderRadius: BorderRadius.only(
