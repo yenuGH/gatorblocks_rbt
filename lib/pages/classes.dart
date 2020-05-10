@@ -27,8 +27,7 @@ class Classes extends StatelessWidget{
                     Expanded(
                       child: TextField(
                         controller: block1,
-                      )
-                    )
+                      ))
                   ],
                 ),
               ),
