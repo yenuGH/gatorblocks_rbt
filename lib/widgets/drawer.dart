@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gatorblocks_rbt/pages/contactDirectory.dart';
+import 'package:gatorblocks_rbt/pages/schoolWebsite.dart';
 //import 'package:gatorblocks_rbt/main.dart';
 import 'package:gatorblocks_rbt/pages/settings.dart';
 import 'package:gatorblocks_rbt/pages/taskPlanner.dart';
@@ -35,6 +37,7 @@ class AppDrawer extends Drawer {
           trailing: Icon(Icons.web),
           onTap: () {
             Navigator.pop(context);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => SchoolWebsite("School Website")));
           },
         ),
         ListTile(
@@ -42,6 +45,7 @@ class AppDrawer extends Drawer {
           trailing: Icon(Icons.contacts),
           onTap: () {
             Navigator.pop(context);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => ContactDirectory()));
           },
         ),
         Divider(),
