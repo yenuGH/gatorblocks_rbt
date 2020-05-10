@@ -3,16 +3,6 @@ import 'package:gatorblocks_rbt/models/settingsModel.dart';
 import 'package:gatorblocks_rbt/pages/classes.dart';
 
 
-class Option {
-  IconButton iconButton;
-  Icon icon;
-  String title;
-  String subtitle;
-
-  Option({this.icon, this.title, this.subtitle});
-}
-
-
 class Settings extends StatelessWidget {
   final String title;
 
