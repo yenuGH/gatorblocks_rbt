@@ -24,8 +24,7 @@ final options = [
       onPressed: (){
         print('Test');
         BuildContext context;
-        Navigator.push(context, MaterialPageRoute(builder: (context) => Classes("Classes")));
-        
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Classes()));
       },
       icon: Icon(Icons.class_, size: 40.0),
     ),

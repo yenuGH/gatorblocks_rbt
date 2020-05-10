@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Classes extends StatelessWidget{
-  Classes(String s);
-
 
   @override
   Widget build(BuildContext context) {

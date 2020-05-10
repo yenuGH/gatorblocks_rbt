@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gatorblocks_rbt/models/settingsModel.dart';
+import 'package:gatorblocks_rbt/pages/classes.dart';
 
 class Settings extends StatelessWidget {
   final String title;
@@ -22,6 +23,7 @@ class Settings extends StatelessWidget {
               //leading: Icon(options.icon),
               onTap: () {
                 print(options[index].title);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Classes()));
               },
               leading: options[index].icon,
               title: Text(options[index].title),
