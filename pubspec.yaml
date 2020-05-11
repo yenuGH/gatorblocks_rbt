@@ -23,6 +23,7 @@ dependencies:
   url_launcher: ^5.4.1
   flutter_bloc: ^4.0.0
   webview_flutter:
+  provider:
 
 
   #Below are some dependencies for a ToDo application list - databasing, date formatting, etc

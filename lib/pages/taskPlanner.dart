@@ -43,11 +43,17 @@ class _TaskPlannerState extends State<TaskPlanner> {
 
   }
 
+  hexColour (String colourHexCode){
+    String colourNew = '0xff' + colourHexCode;
+    colourNew = colourNew.replaceAll('#', '');
+    int colourInt = int.parse(colourNew);
+    return colourInt;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: Color(hexColour('#06894B')),
       
       body: Column(
         children: <Widget>[
@@ -64,7 +70,7 @@ class _TaskPlannerState extends State<TaskPlanner> {
                     onLongPress: () => _updateItem(_itemList[index], index),
                     trailing: Listener(
                       key: Key(_itemList[index].itemName),
-                      child: Icon(Icons.remove_circle, color: Colors.redAccent,),
+                      child: Icon(Icons.remove_circle, color: Colors.red[200],),
                       onPointerDown: (pointerEvent)  => 
                         _deleteTasks(_itemList[index].id, index),
                     ),
@@ -82,12 +88,14 @@ class _TaskPlannerState extends State<TaskPlanner> {
       appBar: AppBar(
         title: Text("Task Planner"),
         centerTitle: true,
+        backgroundColor: Colors.teal[600],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         tooltip: "Add Item",
         onPressed: _showFormDialog,
         child: Icon(Icons.add),
+        backgroundColor: Colors.green,
       ),
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
@@ -130,7 +138,10 @@ class _TaskPlannerState extends State<TaskPlanner> {
           },
           child: Text("Save")
         ),
-         FlatButton(onPressed: () => Navigator.pop(context),
+         FlatButton(onPressed: () {
+           _textEditingController.clear();
+           Navigator.pop(context);
+         },
           child: Text("Cancel"))
       ],
     );
@@ -201,9 +212,11 @@ class _TaskPlannerState extends State<TaskPlanner> {
           },
           child: Text("Update")
         ),
-        FlatButton(onPressed: ()  => Navigator.pop(context), 
-          child: Text("Cancel"),
-          ),
+        FlatButton(onPressed: () {
+           _textEditingController.clear();
+           Navigator.pop(context);
+         },
+          child: Text("Cancel"))
       ],
     );
   

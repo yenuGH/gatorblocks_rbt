@@ -10,11 +10,14 @@ class Classes extends StatelessWidget{
   final block7 = TextEditingController();
   final block8 = TextEditingController();
 
+  // i want to lick your toes
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Classes'),
+        backgroundColor: Colors.teal[600],
       ),
       body: ListView(
         children: <Widget>[

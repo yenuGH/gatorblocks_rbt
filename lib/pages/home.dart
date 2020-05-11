@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-        return Scaffold(
+    return Scaffold(
       backgroundColor: Color(hexColour('#06894B')),
       appBar: AppBar(
         centerTitle: true,
@@ -45,6 +45,7 @@ class _HomeState extends State<Home> {
                 fontWeight: FontWeight.bold
             )
         ),
+        backgroundColor: Colors.green,
         elevation: 0.0,
       ),
       body: SingleChildScrollView(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:gatorblocks_rbt/models/settingsModel.dart';
 import 'package:gatorblocks_rbt/pages/classes.dart';
+import 'package:gatorblocks_rbt/pages/general.dart';
 
 
 class Settings extends StatelessWidget {
@@ -24,14 +25,16 @@ class Settings extends StatelessWidget {
               leading: Icon(Icons.settings, size: 40.0),
               title: Text("General"),
               subtitle: Text("Customize to make it your own."),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => GeneralSettings()));
+              },
               )
             ),
             Card(
               child:
               ListTile(
                 leading: Icon(Icons.class_, size: 40.0),
-                title: Text("Class"),
+                title: Text("Classes"),
                 subtitle: Text("Manage your classes."),
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => Classes()));

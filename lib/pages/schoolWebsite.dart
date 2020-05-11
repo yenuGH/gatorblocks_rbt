@@ -22,6 +22,7 @@ class _SchoolWebsiteState extends State<SchoolWebsite> {
       appBar: AppBar(
         title: Text("School Website"),
         centerTitle: true,
+        backgroundColor: Colors.teal[600],
       ),
       body: WebView(
         initialUrl: "https://www.wgss.ca",
@@ -39,6 +40,7 @@ class _SchoolWebsiteState extends State<SchoolWebsite> {
                 onPressed: () {
                   controller.data.goBack();
                 },
+                backgroundColor: Colors.green,
             );
           }
           return Container();

@@ -18,6 +18,7 @@ class _ContactDirectoryState extends State<ContactDirectory> {
       appBar: AppBar(
         title: Text("Staff Contact Directory"),
         centerTitle: true,
+        backgroundColor: Colors.teal[600],
       ),
       body: WebView(
         initialUrl: "http://wgss.ca/staff-connection/staff-directory-sites/",
@@ -36,6 +37,7 @@ class _ContactDirectoryState extends State<ContactDirectory> {
                 onPressed: () {
                   controller.data.goBack();
                 },
+                backgroundColor: Colors.green,
             );
           }
           return Container();
