@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-//import 'package:gatorblocks_rbt/pages/settings/classes.dart';
 
 
 
 class Blocks extends StatefulWidget {
+final String value1;
+
+Blocks({Key key, this.value1}) : super (key: key);
+
   @override
   _BlocksState createState() => _BlocksState();
 }
@@ -39,7 +42,7 @@ class _BlocksState extends State<Blocks> {
           Card(
             child:
             ListTile(
-              title: Text("Placeholder"),
+              title: Text("${widget.value1}"),
               subtitle: Text("8:30 - 9:39"),
             )
           ),
