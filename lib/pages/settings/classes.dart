@@ -22,9 +22,9 @@ class Classes extends StatelessWidget{
                 title: Text("Update"),
                 subtitle: Text("Update class changes."),
                 onTap: () {
-                  new MaterialPageRoute(
+                  var route = new MaterialPageRoute(
                     builder: (BuildContext context) => new Blocks(value1: block1.text));
-                    //Navigator.of(context).push(route);
+                    Navigator.of(context).push(route);
                 },
               ),
             ),
